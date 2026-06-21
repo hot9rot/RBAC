@@ -1,16 +1,23 @@
+import sys
+import asyncio
+
+# фикс для работы asyncpg на Windows
+if sys.platform == "win32":
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
+
 from contextlib import asynccontextmanager
 
 import uvicorn
 from fastapi import FastAPI
 
 from app.db import create_table, delete_table
-from router import router as user_router
+from app.router import router as user_router
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await delete_table()
-    await create_table()
+
     yield
 
 

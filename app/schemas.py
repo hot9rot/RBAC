@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field, EmailStr
 
-from models import UserRole
+from app.models import UserRole
 
 
 class UserCreate(BaseModel):
@@ -13,3 +13,6 @@ class UserResponse(BaseModel):
     email: EmailStr
     is_active: bool
     role: UserRole
+
+    class Config:
+        from_attributes = True
