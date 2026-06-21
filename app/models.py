@@ -20,4 +20,4 @@ class Users(Base):
     email_address: Mapped[str] = mapped_column(unique=True, index=True)
     hashed_password: Mapped[str]
     is_active: Mapped[bool] = True
-    role: Mapped[UserRole] = mapped_column(Enum(UserRole))
+    role: Mapped[UserRole] = mapped_column(Enum(UserRole), default=UserRole.USER)

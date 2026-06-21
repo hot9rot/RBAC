@@ -10,6 +10,13 @@ from app.config import settings
 from app.models import Users # noqa
 from app.db import Base
 
+import sys
+import asyncio
+
+# Исправление багов asyncio + asyncpg на Windows
+if sys.platform == "win32":
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
