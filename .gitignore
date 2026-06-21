@@ -2,8 +2,18 @@
 ### Example user template
 
 # IntelliJ project files
-.idea
+.idea/
+.vscode/
+
 *.iml
 out
 gen
+__pycache__/
+*.pyc
+
+.venv/
 .env
+
+*.db
+
+alembic.ini
